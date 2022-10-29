@@ -1,0 +1,188 @@
+\ProvidesPackage{ktxbbltx}
+[2022/10/29 v1.0.0 ktxbbltx package]
+\RequirePackage{etoolbox}[2015/05/04]
+\RequirePackage{ifthen}[2014/09/29]
+\RequirePackage{kvoptions}[2011/06/30]
+\RequirePackage{xstring}[2013/10/13]
+\DeclareBoolOption[false]{backref}
+\DeclareBoolOption[false]{eprint}
+\DeclareBoolOption[true]{linking}
+\DeclareBoolOption[true]{titles}
+\ProcessKeyvalOptions*
+\PassOptionsToPackage{%
+  backend      = biber,%
+  style        = numeric-comp,%
+  sorting      = none,%
+  date         = year,%
+  urldate      = comp,%
+  maxcitenames = 2,%
+  maxbibnames  = 3,%
+  giveninits   = true,%
+  doi          = false,%
+  isbn         = false,%
+  url          = false,%
+}{biblatex}
+\ifthenelse{\boolean{ktxbbltx@backref}}{%
+  \PassOptionsToPackage{backref=true}{biblatex}%
+}{}
+\RequirePackage{biblatex}[2015/04/19]
+\ifthenelse{\boolean{ktxbbltx@linking}}{%
+\DeclareFieldFormat{doilink}{%
+  \iffieldundef{doi}{%
+    \iffieldundef{url}{#1}%
+    {\href{\thefield{url}}{#1}}}
+  {\href{http://dx.doi.org/\thefield{doi}}{#1}}}
+}{%
+  \DeclareFieldFormat{doilink}{#1}
+}
+\renewbibmacro*{journal+issuetitle}{% renewed
+  \printtext[doilink]{% added
+    \usebibmacro{journal}%
+    \setunit*{\addspace}%
+    \iffieldundef{series}
+      {}
+      {\newunit
+       \printfield{series}%
+       \setunit{\addspace}}%
+    \usebibmacro{volume+number+eid}%
+    \setunit{\addspace}%
+    \usebibmacro{issue+date}%
+    \setunit{\addcolon\space}%
+    \usebibmacro{issue}%
+    \setunit{\addspace}% added
+    \printfield{pages}% added
+    \newunit}
+}% added
+\renewbibmacro*{note+pages}{% renewed
+  \printfield{note}% removed following 2 lines
+  \newunit}
+\DeclareBibliographyDriver{inproceedings}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\printdelim{nametitledelim}}\newblock
+  \usebibmacro{title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{in:}%
+  \usebibmacro{maintitle+booktitle}%
+  \newunit\newblock
+  \usebibmacro{event+venue+date}%
+  \newunit\newblock
+  \usebibmacro{byeditor+others}%
+  \newunit\newblock
+  \iffieldundef{maintitle}
+    {\printfield{volume}%
+     \printfield{part}}
+    {}%
+  \newunit
+  \printtext[doilink]{% added
+  \printfield{volumes}%
+  \newunit\newblock
+  \usebibmacro{series+number}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \printlist{organization}%
+  \newunit
+  \usebibmacro{publisher+location+date}%
+  \newunit\newblock
+  \usebibmacro{chapter+pages}%
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{isbn}}
+    {}%
+  }% added
+  \newunit\newblock
+  %\usebibmacro{doi+eprint+url}% % removed
+  \iftoggle{bbx:eprint}% added
+    {\usebibmacro{eprint}}% added
+    {}% added
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \iftoggle{bbx:related}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}
+\DeclareFieldFormat{howpublished}{\printtext[doilink]{#1}}
+\DeclareFieldFormat*{title}{\mkbibemph{#1}}
+\DeclareFieldFormat{volume}{\textbf{#1}\space}
+\DeclareFieldFormat{journaltitle}{#1}
+\DeclareFieldFormat{pages}{\mkfirstpage{#1}}
+\DeclareFieldFormat{usera}{\mkbibparens{#1}}
+\renewcommand*{\newunitpunct}{\addcomma\space}
+\renewcommand*{\finentrypunct}{}
+\renewbibmacro{in:}{}
+\DefineBibliographyStrings{ngerman}{%
+  page = {},
+  pages = {}
+}
+\DefineBibliographyStrings{english}{%
+  page = {},
+  pages = {}
+}
+\AtEveryBibitem{%
+  \ifentrytype{article}{%
+    \clearfield{issue}%
+    \clearfield{number}%
+  }{}
+}
+\ifthenelse{\boolean{ktxbbltx@titles}}{%
+  \relax
+}{%
+\AtEveryBibitem{\clearfield{title}}
+}
+\DeclareSourcemap{%
+  \maps[datatype=bibtex,overwrite=true]{%
+    \map{%
+      \step[fieldsource=Collaboration, final=true]
+      \step[fieldset=usera, origfieldval, final=true]
+    }
+  }
+}
+\renewbibmacro*{author}{% renewed
+  \ifboolexpr{
+    test \ifuseauthor
+    and
+    not test {\ifnameundef{author}}
+  }
+    {\printnames{author}%
+     \iffieldundef{authortype}
+       {}
+       {\setunit{\addcomma\space}%
+        \usebibmacro{authorstrg}}% removed brace
+      \iffieldundef{usera}{}{% added
+        \setunit{\space}%
+        \printfield{usera}}% added
+    }% added
+    {}}
+\ifthenelse{\boolean{ktxbbltx@eprint}}{%
+  \relax
+}{%
+  \AtEveryBibitem{%
+    \ifentrytype{article}{%
+      \iffieldundef{journaltitle}{%
+        \relax
+      }{%
+        \clearfield{eprint}
+      }
+    }{}
+    \ifentrytype{inproceedings}{%
+      \iffieldundef{url}{%
+        \relax
+      }{%
+        \clearfield{eprint}
+      }
+    }
+  }
+}
+\endinput
+%%
+%% End of file `ktxbbltx.sty'.
