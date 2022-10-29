@@ -34,13 +34,13 @@
 \DeclareStringOption[default]{headers}
 \DeclareBoolOption[true]{pagenumberstop}
 \PassOptionsToClass{%
-                    fontsize     = 11pt,%
-                    twoside      = yes,%
-                    DIV          = 12,%
-                    titlepage    = firstiscover,%
-                    numbers      = autoendperiod,%
-                    toc          = bibliography,%
-                    }{scrbook}
+  fontsize=11pt,%
+  twoside=yes,%
+  DIV=12,%
+  titlepage=firstiscover,%
+  numbers=autoendperiod,%
+  toc=bibliography,%
+}{scrbook}
 \DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{scrbook}}
 \ProcessKeyvalOptions*
 \LoadClass{scrbook}
