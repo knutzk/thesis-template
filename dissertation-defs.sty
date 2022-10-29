@@ -1,0 +1,138 @@
+% Definitions of abbreviations to be used in the document
+
+% Extra units particular for particle physics.
+\DeclareSIUnit{\electronvolt}{eV}
+\DeclareSIUnit{\keV}{\kilo\electronvolt}
+\DeclareSIUnit{\MeV}{\mega\electronvolt}
+\DeclareSIUnit{\GeV}{\giga\electronvolt}
+\DeclareSIUnit{\TeV}{\tera\electronvolt}
+\DeclareSIUnit{\barn}{b}
+\DeclareSIUnit{\ifb}{\femto\barn^{-1}}
+\DeclareSIUnit{\fb}{\femto\barn}
+\DeclareSIUnit{\pb}{\pico\barn}
+
+% Values quoted at various places
+\newcommand{\intlumi}{\SI{139}{\ifb}\xspace}
+\newcommand{\sqrts}{\SI{13}{\TeV}\xspace}
+\newcommand{\sqrtslong}{\ensuremath{\sqrt{s} = \SI{13}{\TeV}}\xspace}
+
+% Experiments and ATLAS components
+\newcommand{\ALICE}{\textsc{alice}\xspace}
+\newcommand{\ATLAS}{\textsc{atlas}\xspace}
+\newcommand{\CDF}{\textsc{cdf}\xspace}
+\newcommand{\CMS}{\textsc{cms}\xspace}
+\newcommand{\dzero}{\textsc{d}{\scriptsize\O}\xspace}
+\newcommand{\ECAL}{\textsc{ecal}\xspace}
+\newcommand{\HCAL}{\textsc{hcal}\xspace}
+\newcommand{\HLT}{\textsc{hlt}\xspace}
+\newcommand{\IBL}{\textsc{ibl}\xspace}
+\newcommand{\ID}{\textsc{id}\xspace}
+\newcommand{\LHCb}{\textsc{lhc}\kern0.05em{\scriptsize b}\xspace}
+\newcommand{\Lone}{\textsc{l1}\xspace}
+\newcommand{\MS}{\textsc{ms}\xspace}
+\newcommand{\PIXEL}{\textsc{pixel}\xspace}
+\newcommand{\SCT}{\textsc{sct}\xspace}
+\newcommand{\TDAQ}{\textsc{tdaq}\xspace}
+\newcommand{\TRT}{\textsc{trt}\xspace}
+
+% Abbreviations with a fixed typesetting
+\newcommand*{\atlfast}{\textsc{afii}\xspace}
+\newcommand{\BSM}{\textsc{bsm}\xspace}
+\newcommand{\CERN}{\textsc{cern}\xspace}
+\newcommand{\cf}{c.f.\xspace}
+\newcommand{\DGLAP}{\textsc{dglap}\xspace}
+\newcommand{\eg}{e.g.\xspace}
+\newcommand{\EFT}{\textsc{eft}\xspace}
+\newcommand{\Evtgen}{\textsc{evtgen}\xspace}
+\newcommand{\Geant}{\textsc{geant}\kern0.1em4\xspace}
+\newcommand{\Herwig}{\textsc{herwig}\kern0.1em7\xspace}
+\newcommand{\ie}{i.e.\xspace}
+\newcommand{\IPtwoD}{\textsc{ip2d}\xspace}
+\newcommand{\IPthreeD}{\textsc{ip3d}\xspace}
+\newcommand{\ISR}{\textsc{isr}\xspace}
+\newcommand{\JetFitter}{\textsc{jetfitter}\xspace}
+\newcommand{\JVT}{\textsc{jvt}\xspace}
+\newcommand{\LEP}{\textsc{lep}\xspace}
+\newcommand{\LHC}{\textsc{lhc}\xspace}
+\newcommand{\LO}{\textsc{lo}\xspace}
+\newcommand{\LOPS}{\LO{}+\textsc{ps}\xspace}
+\newcommand{\MC}{\textsc{mc}\xspace}
+\newcommand{\MDM}{\textsc{mdm}\xspace}
+\newcommand{\MVtwo}{\textsc{mv2}\xspace}
+\newcommand{\MVtwoCten}{\textsc{mv2c10}\xspace}
+\newcommand{\NDF}{\textsc{ndf}\xspace}
+\newcommand{\NLO}{\textsc{nlo}\xspace}
+\newcommand{\NNLO}{\textsc{nnlo}\xspace}
+\newcommand{\NNPDF}{\textsc{nnpdf}\xspace}
+\newcommand{\NNPDFLO}{\NNPDF{}\,2.3\,\LO{}\xspace}
+\newcommand{\NNPDFNLO}{\NNPDF{}\,3.0\,\NLO{}\xspace}
+\newcommand{\NNPDFNNLO}{\NNPDF{}\,3.0\,\NNLO{}\xspace}
+\newcommand{\PDF}{\textsc{pdf}\xspace}
+\newcommand{\PDG}{\textsc{pdg}\xspace}
+\newcommand{\PDGID}{\textsc{pdg id}\xspace}
+\newcommand{\POI}{\textsc{poi}\xspace}
+\newcommand{\Powheg}{\textsc{powheg-box}\xspace}
+\newcommand{\PS}{\textsc{ps}\xspace}
+\newcommand{\Pythia}{\textsc{pythia}\kern0.1em8\xspace}
+\newcommand{\QCD}{\textsc{qcd}\xspace}
+\newcommand{\ROC}{\textsc{roc}\xspace}
+\newcommand{\Sherpa}{\textsc{sherpa}\xspace}
+\newcommand{\SM}{\textsc{sm}\xspace}
+\newcommand{\SVone}{\textsc{sv1}\xspace}
+\newcommand{\TEVATRON}{\textsc{tevatron}\xspace}
+\newcommand{\Topplusplus}{\textsc{top}{\footnotesize ++}~2.0\xspace}
+
+% Processes/final states with optimised typesetting
+\newcommand{\daggered}[1]{\ensuremath{#1^\dagger}\xspace}
+\newcommand{\plusjets}[1]{\ensuremath{#1\text{+jets}}\xspace}
+\newcommand{\ejets}{\ensuremath{\plusjets{e\mkern-1mu}}\xspace}
+\newcommand{\mujets}{\ensuremath{\plusjets{\mu}}\xspace}
+\newcommand{\ljets}{lepton+jets\xspace}
+\newcommand{\Wjets}{\ensuremath{\plusjets{W\mkern-2mu}}\xspace}
+\newcommand{\Zjets}{\ensuremath{\plusjets{Z\mkern-1mu}}\xspace}
+\newcommand{\pp}{\ensuremath{p\mkern-1mu p}\xspace}
+\newcommand{\ppbar}{\ensuremath{p\bar{p}}\xspace}
+\newcommand{\qqbar}{\ensuremath{q\bar{q}}\xspace}
+\newcommand{\ttbar}{\ensuremath{t\mkern+1.0mu \bar{\mkern-1mu t}}\xspace}
+\newcommand{\ttV}{\ensuremath{t\mkern+0.5mu \bar{\mkern-1mu t}\mkern-1mu V}\xspace}
+
+% Common terms/phrases
+\newcommand*{\btag}{\ensuremath{b\text{-tagging}}\xspace}
+\newcommand*{\btagged}{\ensuremath{b\text{-tagged}}\xspace}
+\newcommand*{\bhadron}{\ensuremath{b\text{-hadron}}\xspace}
+\newcommand*{\bhadrons}{\ensuremath{b\text{-hadrons}}\xspace}
+\newcommand*{\bquark}{\ensuremath{b\text{-quark}}\xspace}
+\newcommand*{\bquarks}{\ensuremath{b\text{-quarks}}\xspace}
+\newcommand*{\bjet}{\ensuremath{b\text{-jet}}\xspace}
+\newcommand*{\bjets}{\ensuremath{b\text{-jets}}\xspace}
+\newcommand*{\chadron}{\ensuremath{c\text{-hadron}}\xspace}
+\newcommand*{\chadrons}{\ensuremath{c\text{-hadrons}}\xspace}
+\newcommand*{\cjet}{\ensuremath{c\text{-jet}}\xspace}
+\newcommand*{\cjets}{\ensuremath{c\text{-jets}}\xspace}
+\newcommand{\com}{centre-of-mass\xspace}
+\newcommand{\etaphi}{\ensuremath{\eta}--\ensuremath{\phi}\xspace}
+\newcommand{\etmiss}{\ensuremath{E_{\mathrm{T}}^{\mathrm{miss}}}\xspace}
+\newcommand{\runi}{Run~1\xspace}
+\newcommand{\runii}{Run~2\xspace}
+\newcommand{\runiii}{Run~3\xspace}
+\newcommand{\spinhalf}{spin-\sfrac{1}{2}\xspace}
+\newcommand{\spinone}{spin-1\xspace}
+\newcommand{\taulepton}{\ensuremath{\tau}-lepton\xspace}
+\newcommand{\tauleptons}{\ensuremath{\tau}-leptons\xspace}
+\newcommand{\Wboson}{\ensuremath{W\mkern-2mu}~boson\xspace}
+\newcommand{\Wbosons}{\ensuremath{W\mkern-2mu}~bosons\xspace}
+\newcommand{\xsec}{cross-section\xspace}
+\newcommand{\xsecs}{cross-sections\xspace}
+\newcommand{\Zboson}{\ensuremath{Z}~boson\xspace}
+\newcommand{\Zbosons}{\ensuremath{Z}~bosons\xspace}
+
+% Expressions in mathematical formulas (variables etc.)
+\newcommand*{\abseta}{\ensuremath{|\eta|}\xspace}
+\newcommand*{\antikt}{anti-\ensuremath{k_{\text{T}}}\xspace}
+\newcommand{\conj}[1]{\ensuremath{\overline{#1}}\xspace}
+\newcommand*{\pT}{\ensuremath{p_{\text{T}}}\xspace}
+\newcommand{\ptcone}[1]{\ensuremath{\pT^{\text{cone#1}}}\xspace}
+\newcommand{\ptvarcone}[1]{\ensuremath{\pT^{\text{varcone#1}}}\xspace}
+\newcommand*{\ET}{\ensuremath{E_{\text{T}}}\xspace}
+\newcommand*{\MET}{\ensuremath{E_{\text{T}}^{\text{miss}}}\xspace}
+\newcommand{\LambdaQCD}{\ensuremath{\Lambda_{\textsc{qcd}}}\xspace}

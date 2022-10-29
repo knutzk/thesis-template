@@ -1,0 +1,139 @@
+%% Main file
+
+%% Make sure this is processed via pdftex.
+\pdfoutput=1
+
+\documentclass[%
+               pagenumberstop=false,%   % page numbers at top of page instead
+               BCOR=8mm,%               % binding: 0mm (spiral), 6mm (glued)
+               ngerman,english,%        % document languages (secondary, main)
+               % preliminary=true,%       % activate for timestamp + line numbers
+               ]{ktxthss}
+
+\usepackage[%
+            % backref=true,%              % create back-references in bibliography
+            % eprint=true,%               % show eprint identifiers for all entries
+            linking=true,%              % hyperlink journal titles with DOI
+            titles=true,%               % show titles of articles (def: true)
+            ]{ktxbbltx}
+
+% ==========================================================
+% Place any extra packages between this and the following
+% horizontal rule, but definitely _not_ afterwards. This
+% would screw badly with the hyperref package ...
+% ==========================================================
+
+\usepackage{bm}
+\usepackage{adjustbox}
+\usepackage{multirow}
+\usepackage{diagbox}
+\usepackage{xfrac}
+
+% Handy packages for creating drafts: create a paragraph of
+% random text, and add to-do notes to the document. Probably
+% comment them out for the final version.
+\usepackage{blindtext}
+% \usepackage{todonotes}
+
+% ==========================================================
+
+\usepackage[%
+            colorlinks = true,%
+            urlcolor   = Venetian,%
+            citecolor  = Lime,%
+            linkcolor  = Dodger,%
+            linktocpage = true,%
+            pdfauthor={Your Name},%
+            pdftitle={Thesis title},%
+            pdfsubject={Thesis subject},%
+            pdfkeywords={PhD thesis, dissertation},%
+            ]{hyperref}
+\usepackage[noabbrev,capitalise]{cleveref}
+
+% Uncomment this line to hide all links in the document
+% (cross-references, URLs, bibliography entries). This
+% should be used when preparing a print version.
+% \hypersetup{hidelinks}
+
+% Adjust these paths to your own needs:
+\bibliography{dissertation-bib}
+\usepackage{dissertation-defs}
+
+% Choose to include either the English or German cover page +
+% back of the title. Adjust thesis title, names etc. in the
+% documents "title_[english,german].tex" directly.
+\input{tex/title_english}
+% \input{tex/title_german}
+
+% The following command can be used to only generate parts
+% of the full document. Put the include paths, as you would
+% use it for the \include{tex/file} command, in the the
+% following list of files.
+% \includeonly{%
+  % tex/introduction,
+  % tex/results,
+  % tex/conclusions,
+  % tex/app-add-material,
+% }
+
+
+% ==========================================================
+%  B E G I N N I N G   O F   D O C U M E N T
+% ==========================================================
+\begin{document}
+
+\frontmatter
+\pagestyle{empty}
+\maketitle
+
+\pagestyle{plain}
+
+% Abstracts in English and German. Choose whatever you consider
+% appropriate. My personal thoughts are (assuming the thesis is
+% written in English): if the title page is in German, go with
+% German and English abstracts (in this order). If the title page
+% is English already, the English abstract should follow
+% immediately, and the German abstract can be dropped.
+\input{tex/abstract_en}
+% \input{tex/abstract_de}
+
+% In case you want to add an epigraph (quote) to the document.
+\input{tex/epigraph}
+
+\tableofcontents
+
+% In case you want a list of figures, uncomment the following
+% line and the index is generated automatically.
+% \listoffigures
+
+% In case you want a list of tables, uncomment the following
+% line and the index is generated automatically.
+% \listoftables
+
+% Either just acknowledgements or maybe a more lengthy preface
+% that includes some personal words about the thesis.
+\input{tex/preface}
+
+% An additional section that lists the exact contributions.
+\input{tex/contributions}
+
+% ==========================================================
+\mainmatter
+\pagestyle{headings}
+% ==========================================================
+
+\include{tex/introduction}
+
+\include{tex/results}
+
+\include{tex/conclusions}
+
+% ==========================================================
+\printbibliography
+% ==========================================================
+
+\appendix
+
+\include{tex/app-add-material}
+
+\end{document}

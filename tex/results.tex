@@ -1,0 +1,48 @@
+% Describe the main results
+
+\chapter{Results}
+\label{chap:results}
+
+Write the results here.
+And we can make a reference to \cref{tab:results-yields}.
+\blindtext
+
+We can also add a formula with
+%
+\begin{align}
+  \label{eq:conclusions-xsec}
+  \sigma^{\text{fid}} (\tty \to \emu)
+  = 291.1 \pm 0.8 \stat ^{+2.9}_{-2.4} \syst \si{\fb}
+  = 291.1 \, ^{+3.0}_{-2.5} \; \si{\fb} \, ,
+\end{align}
+%
+corresponding to total relative uncertainties of $^{+\SI{1.0}{\percent}}_{-\SI{0.9}{\percent}}$.
+
+
+\begin{table}
+  \centering
+  \caption[Event Yields]{%
+    Example of a table showing event yields. 
+    The table format is specified in such a way that values are aligned properly.
+  }
+  \label{tab:results-yields}
+  \footnotesize
+  \begin{tabular}{%
+    l
+    S[table-format=3.0] @{${}\pm{}$} S[table-format=2.0]
+    S[table-format=3.0] @{${}\pm{}$} S[table-format=2.0]
+    S[table-format=4.0] @{${}\pm{}$} S[table-format=2.0]
+    S[table-format=4.0] @{${}\pm{}$} S[table-format=3.0]
+    }
+    \toprule
+    & \multicolumn{2}{c}{2015/16} & \multicolumn{2}{c}{2017} & \multicolumn{2}{c}{2018} & \multicolumn{2}{c}{full dataset} \\
+    \midrule
+    \ttbar & 234 & 12 & 948 & 40 & 947  & 50 & 9371 & 130 \\
+    \Wjets & 23  & 3  & 32  & 3  & 74   & 9  & 384  & 15  \\
+    \midrule
+    Total \MC & 304 & 40 & 978 & 50 & 1027 & 70 & 9836 & 160 \\
+    \midrule
+    Data & \multicolumn{2}{l}{843} & \multicolumn{2}{l}{987} & \multicolumn{2}{l}{1373} & \multicolumn{2}{l}{3291} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
